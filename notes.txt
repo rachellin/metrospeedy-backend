@@ -18,3 +18,6 @@ or i could just make separate variables... but then that wouldn't have index for
 CHECK IF ZIPS ARE CORRECT: array1 = array2
 
 loop through the rows in a table to create array from the zip codes 
+
+table in row:
+'//*[@id="city_1"]/div/div[1]/div/div/table/tbody/tr[ROW_NUMBER]/td[1]'

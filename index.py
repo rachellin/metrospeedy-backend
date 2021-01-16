@@ -36,21 +36,15 @@ driver.get("https://app.metrospeedy.com/employee/management/#/zipcodes")
 # zipcode = driver.find_elements_by_xpath('//*[@id="city_5"]/div/div/div/div/table/tbody/tr')
 # print(len(zipcode))
 
-# BROOKLYN
-# for zone in tabs["brooklyn"]:
-#     for index, code in enumerate(zone):
-#         count = driver.find_element_by_xpath('//*[@id="city_1"]/div/div[1]/div/div/table/tbody/tr'.format(
-#             region = 1, 
-#             zone = 1
-#         ))
-
 # for index, zone in enumerate(tabs["bklyn"].keys()):
 #     count = len(driver.find_elements_by_xpath('//*[@id="city_1"]/div/div[{index}]/div/div/table/tbody/tr'.format(index=index+1)))
 #     print("{zone}: {count}".format(zone=zone, count=count))
 
 # count number of zips 
-for region_i, region in enumerate(tabs.keys()):
-    print("\n{}".format(region))
+def count_zips ():
+    '''print the number of zips for each set in each region'''
+    for region_i, region in enumerate(tabs.keys()):
+        print("\n{}".format(region))
     
     # switch tab 
     WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="content"]/section/section/div/section/div[1]/ul/li[{region_i}]/a'.format(region_i=region_i+1))))
@@ -69,3 +63,20 @@ for region_i, region in enumerate(tabs.keys()):
                 region_i=region_i+1
             )))
         print("{zone}: {count}".format(zone=zone, count=count))
+
+# create array with the zip codes in tables 
+
+WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="content"]/section/section/div/section/div[1]/ul/li[1]/a')))
+tab = driver.find_element_by_xpath('//*[@id="content"]/section/section/div/section/div[1]/ul/li[1]/a')
+count = len(driver.find_elements_by_xpath('//*[@id="city_1"]/div/div[1]/div/div/table/tbody/tr'))
+arr = []
+for x in range(count):
+    zip_code = driver.find_element_by_xpath('//*[@id="city_1"]/div/div[1]/div/div/table/tbody/tr[{x}]/td[1]'.format(x=x+1)).text
+    arr.append(zip_code)
+print(arr)
+
+# WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="content"]/section/section/div/section/div[1]/ul/li[1]/a')))
+# tab = driver.find_element_by_xpath('//*[@id="content"]/section/section/div/section/div[1]/ul/li[1]/a')
+# tab.click()
+# x = driver.find_element_by_xpath('//*[@id="city_1"]/div/div[1]/div/div/table/tbody/tr[1]/td[1]').text
+# print(x)
