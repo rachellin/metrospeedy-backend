@@ -1,0 +1,20 @@
+# BROOKLYN
+north = driver.find_element_by_xpath('//*[@id="city_1"]/div/div[1]/div/div/table/tbody/tr[1]')
+# if borough has mutliple sets, second div has index. if it only has one set, no index
+
+//*[@id="city_(index(region)+1)"]/div/div[index(region[index(set)])]/div/div/table/tbody/tr
+
+every region in dictionary
+every key-value pair in region dictionary has dictionary for sets 
+every key-value pair in set diciontary has an array for the zip codes 
+
+or i could just make separate variables... but then that wouldn't have index for region
+
+1. switch to tab
+2. check if set (table) has all the zip codes 
+    a. for z in tab[region[set]]\
+    
+
+CHECK IF ZIPS ARE CORRECT: array1 = array2
+
+loop through the rows in a table to create array from the zip codes 
