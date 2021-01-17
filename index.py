@@ -73,10 +73,6 @@ arr = []
 for x in range(count):
     zip_code = driver.find_element_by_xpath('//*[@id="city_1"]/div/div[1]/div/div/table/tbody/tr[{x}]/td[1]'.format(x=x+1)).text
     arr.append(zip_code)
-print(arr)
+arr = [int(i) for i in arr] # convert list items to integers
+print(set(arr) == set(tabs["bklyn"]["north"]))
 
-# WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="content"]/section/section/div/section/div[1]/ul/li[1]/a')))
-# tab = driver.find_element_by_xpath('//*[@id="content"]/section/section/div/section/div[1]/ul/li[1]/a')
-# tab.click()
-# x = driver.find_element_by_xpath('//*[@id="city_1"]/div/div[1]/div/div/table/tbody/tr[1]/td[1]').text
-# print(x)
